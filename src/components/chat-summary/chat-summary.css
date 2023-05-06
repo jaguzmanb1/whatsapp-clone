@@ -1,0 +1,32 @@
+.chat-summary-section{
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid rgba(255,255,255,.25);
+}
+
+.chat-summary-section img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.chat-summary-section p {
+    margin: 0;
+}
+
+.chat-summary-name {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.last-message {
+    margin-top: 2px;
+    font-size: 16px;
+}

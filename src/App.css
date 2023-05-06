@@ -1,0 +1,52 @@
+.chat-container {
+  background-color:dimgray;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 3.5fr 8.5fr;
+}
+
+.main-container {
+  width: 90vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+
+  height: 96vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+
+  background-color: darkslategray;
+}
+
+.left-panel-container {
+  border-right: 1px solid rgba(255,255,255,.25);
+  border-width: thin;
+}
+
+.profile-config-menu {
+  display: flex;
+
+  background-color: aqua;
+  min-height: 40px;
+
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+
+  align-items: center;
+}
+
+.left-panel-container .profile-config-menu img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.left-panel-container .profile-config-menu #dots-icon {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+}
