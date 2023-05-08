@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 96vh;
+    background-color: #0c141a
 }
 
 .chat-panel-menu {
@@ -38,6 +39,22 @@
     flex-basis: calc(96vh - 8.1em);
     flex-shrink: 1;
     overflow: auto;
+    
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.chat-panel-messages-container::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+.chat-panel-messages-container::-webkit-scrollbar{
+	width: 0.4em;
+	background-color: transparent;
+}
+
+.chat-panel-messages-container::-webkit-scrollbar-thumb{
+	background-color: rgba(255,255,255,.16);
 }
 
 .chat-panel-messages {    
@@ -108,7 +125,7 @@
 }
 
 .chat-panel-textbox-container {
-    width: 500px;
+    width: 80%;
     min-width: 20px;
     box-sizing: border-box;
     padding: 9px 18px 11px;
@@ -144,3 +161,4 @@
     opacity: 0;
     transition: 0.2s padding ease-in-out;
 }
+
