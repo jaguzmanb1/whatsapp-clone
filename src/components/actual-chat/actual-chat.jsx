@@ -98,7 +98,12 @@ export const ChatPanel = () => {
             </section>
             <section className='chat-panel-textbox'>
                 <FontAwesomeIcon className='icon' icon={faFaceSmileWink} />
-                <textarea value={actualMessage} onChange={ e => setActualMessage(e.target.value) }/>
+                <div className='chat-panel-textbox-container'>
+                    <div className='chat-panel-textbox-group'>
+                        <div id="chat-panel-input-text" contentEditable />
+                        <div className='chat-panel-placeholder'>Type a message</div>
+                    </div>
+                </div>
             </section>
         </section>
     )
