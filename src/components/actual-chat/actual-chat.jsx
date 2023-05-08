@@ -7,6 +7,15 @@ export const ChatPanel = () => {
 
     const [ actualMessage, setActualMessage ] = useState("")
 
+    const handleMessageChange = (e) => {
+        setActualMessage(e.target.innerText)
+        console.log(e)
+    }
+
+    const handleKeyUp = (e) => {
+        console.log(e)
+    }
+
     return(
         <section className="chat-panel-container">
             <section className="chat-panel-menu">
@@ -99,7 +108,7 @@ export const ChatPanel = () => {
                 <FontAwesomeIcon className='icon' icon={faFaceSmileWink} />
                 <div className='chat-panel-textbox-container'>
                     <div className='chat-panel-textbox-group'>
-                        <div id="chat-panel-input-text" contentEditable onInput={e => setActualMessage(e.target.innerText)} />
+                        <div id="chat-panel-input-text" contentEditable onInput={handleMessageChange} onKeyUp={handleKeyUp}/>
                         <div className='chat-panel-placeholder'>Type a message</div>
                     </div>
                 </div>
