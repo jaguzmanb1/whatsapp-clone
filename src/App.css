@@ -1,10 +1,14 @@
 .chat-container {
   background-color:dimgray;
-  width: 100%;
+  width: 90vw;
   height: 100%;
 
   display: grid;
   grid-template-columns: 3.5fr 8.5fr;
+  grid-template-areas: 
+    'header header'
+    'col1 col2'
+  ;
 }
 
 .main-container {
@@ -17,14 +21,6 @@
   padding-bottom: 2vh;
 
   background-color: darkslategray;
-}
-
-
-.left-panel-container {
-  border-right: 1px solid rgba(255,255,255,.25);
-  border-width: thin;
-
-  background-color: #111b21;
 }
 
 .profile-config-menu {
@@ -40,6 +36,18 @@
   padding-bottom: 0.8rem;
 
   align-items: center;
+}
+
+.right-panel-container {
+  min-width: 100%;
+}
+
+.left-panel-container {
+  width: 100%;
+  border-right: 1px solid rgba(255,255,255,.25);
+  border-width: thin;
+
+  background-color: #111b21;
 }
 
 .left-panel-container .profile-config-menu img {
