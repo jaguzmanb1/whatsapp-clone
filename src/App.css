@@ -23,12 +23,14 @@
 .left-panel-container {
   border-right: 1px solid rgba(255,255,255,.25);
   border-width: thin;
+
+  background-color: #111b21;
 }
 
 .profile-config-menu {
   display: flex;
 
-  background-color: aqua;
+  background-color: #1f2c33;
   min-height: 40px;
 
   padding-left: 1rem;

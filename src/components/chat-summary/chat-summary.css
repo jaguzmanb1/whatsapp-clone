@@ -1,6 +1,8 @@
 .chat-summary-section{
     display: flex;
     flex-direction: row;
+
+    color: white;
 }
 
 .chat-summary-section:hover section {
@@ -8,7 +10,7 @@
 }
 
 .chat-summary-text {
-    border-bottom: 1px solid rgba(255,255,255,.25);
+    border-bottom: 1px solid #2a3942;
 
     display: flex;
     flex-grow: 1;
@@ -32,10 +34,13 @@
 
 .chat-summary-name {
     font-size: 19px;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .last-message {
     margin-top: 2px;
     font-size: 16px;
+    font-weight: 200;
+
+    color: #8696a0 ;
 }
