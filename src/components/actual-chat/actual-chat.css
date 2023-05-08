@@ -101,6 +101,8 @@
 }
 
 .message-box {
+    max-width: 80%;
+
     padding-left: 1rem;
     padding-right: 1rem;
 
@@ -110,6 +112,8 @@
     margin-bottom: 0.2rem;
 
     color: #e9edef;
+
+    white-space: pre-line;
 }
 
 .chat-panel-sent {

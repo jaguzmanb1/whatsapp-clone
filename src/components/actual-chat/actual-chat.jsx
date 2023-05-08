@@ -2,18 +2,57 @@ import './actual-chat.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFaceSmileWink } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
+import React from 'react'
 
-export const ChatPanel = () => {
+import ContentEditable from 'react-contenteditable'
+
+export const ChatPanel = ({conversation, addMessageFunc}) => {
 
     const [ actualMessage, setActualMessage ] = useState("")
 
+    const innerRef = React.createRef(9)
+
     const handleMessageChange = (e) => {
-        setActualMessage(e.target.innerText)
-        console.log(e)
+        setActualMessage(e.currentTarget.outerText)
     }
 
     const handleKeyUp = (e) => {
-        console.log(e)
+        if (e.nativeEvent.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+            if (actualMessage.replace(/[\r\n| ]/gm, '') == "") {
+                return
+            }
+            addMessageFunc({
+                "text": actualMessage,
+                "type": "sent"
+            })
+
+            setActualMessage("")
+        }
+    }
+
+    const renderMessages = () => {
+        let messages = []
+        conversation.map(function(msg) {
+            if (msg["type"] == "sent") {
+                messages.push(
+                    <li className='chat-panel-sent message-box'>
+                        {msg["text"]}
+                    </li>
+                )
+            } else {
+                messages.push(
+                    <li className='chat-panel-received message-box'>
+                        {msg["text"]}
+                    </li>
+                )
+            }
+        })
+        return messages
+    }
+
+    const handlePaste = (e) => {
+        console.log(e.clipboardData.getData('Text'))
     }
 
     return(
@@ -24,91 +63,21 @@ export const ChatPanel = () => {
             </section>
             <section className='chat-panel-messages-container'>
                 <ul className='chat-panel-messages'>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Estakjsdahdjkashdjksa dhsakjds
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Estakjsdahdjkashdjksa dhsakjds
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Estakjsdahdjkashdjksa dhsakjds
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-sent message-box'>
-                        Enviado
-                    </li>
-                    <li className='chat-panel-received message-box'>
-                        Recibido
-                    </li>
+                    {renderMessages()}
                 </ul>
             </section>
             <section className='chat-panel-textbox'>
                 <FontAwesomeIcon className='icon' icon={faFaceSmileWink} />
                 <div className='chat-panel-textbox-container'>
                     <div className='chat-panel-textbox-group'>
-                        <div id="chat-panel-input-text" contentEditable onInput={handleMessageChange} onKeyUp={handleKeyUp}/>
+                        <ContentEditable id="chat-panel-input-text"
+                        contenteditable="plaintext-only"
+                            innerRef={innerRef}
+                            disabled={false}
+                            html={actualMessage}
+                            onChange={handleMessageChange} 
+                            onKeyPress={handleKeyUp}
+                            onPaste={handlePaste}/>
                         <div className='chat-panel-placeholder'>Type a message</div>
                     </div>
                 </div>

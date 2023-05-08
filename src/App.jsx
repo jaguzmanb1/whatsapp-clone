@@ -7,7 +7,12 @@ import { ChatSummary } from './components/chat-summary/chat-summary';
 import { ChatPanel } from './components/actual-chat/actual-chat';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [conversation, setConversation] = useState([])
+
+  const appendToConversation = (element) => {
+    setConversation(p => [...conversation, element])
+  }
 
   return (
     <section className='main-container'>
@@ -21,7 +26,10 @@ function App() {
           <ChatSummary/>
         </section>
         <section className='right-panel-container'>
-          <ChatPanel/>
+          <ChatPanel
+            conversation={conversation}
+            addMessageFunc={appendToConversation}
+          />
         </section>
       </section>
     </section>
