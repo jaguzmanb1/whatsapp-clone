@@ -115,6 +115,8 @@
     color: #e9edef;
 
     white-space: pre-line;
+    overflow-wrap: break-word;;
+
 }
 
 .chat-panel-sent {

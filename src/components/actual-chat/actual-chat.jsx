@@ -71,7 +71,7 @@ export const ChatPanel = ({conversation, addMessageFunc}) => {
                 <div className='chat-panel-textbox-container'>
                     <div className='chat-panel-textbox-group'>
                         <ContentEditable id="chat-panel-input-text"
-                        contenteditable="plaintext-only"
+                            contentEditable="plaintext-only"
                             innerRef={innerRef}
                             disabled={false}
                             html={actualMessage}
