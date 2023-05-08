@@ -1,20 +1,29 @@
 .chat-summary-section{
     display: flex;
-    align-items: center;
+    flex-direction: row;
+}
 
+.chat-summary-section:hover section {
+    background-color: rgb(112,108,108);
+}
+
+.chat-summary-text {
     border-bottom: 1px solid rgba(255,255,255,.25);
+
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+    justify-content: center;
+
+    height: auto;
 }
 
 .chat-summary-section img {
     width: 50px;
-    height: 50px;
     border-radius: 50%;
 
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    margin: 0.5em 1em 0.5em 1em;
 }
 
 .chat-summary-section p {

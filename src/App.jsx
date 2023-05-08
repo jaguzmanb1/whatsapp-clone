@@ -11,6 +11,7 @@ function App() {
 
   return (
     <section className='main-container'>
+      <link href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css" rel="stylesheet"/>
       <section className='chat-container'>
         <section className='left-panel-container'> 
           <ProfileMenu/>

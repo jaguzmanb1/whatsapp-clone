@@ -8,16 +8,17 @@
 }
 
 .main-container {
-  width: 90vw;
+  width: 100vw;
   padding-left: 5vw;
   padding-right: 5vw;
 
-  height: 96vh;
+  height: 100vh;
   padding-top: 2vh;
   padding-bottom: 2vh;
 
   background-color: darkslategray;
 }
+
 
 .left-panel-container {
   border-right: 1px solid rgba(255,255,255,.25);
