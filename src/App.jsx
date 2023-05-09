@@ -2,7 +2,7 @@ import { useState } from 'react'
 import 'normalize.css';
 import './App.css'
 
-import { ProfileMenu } from './components/profie-menu';
+import { ProfileMenu } from './components/profile-menu/profie-menu';
 import { ChatSummary } from './components/chat-summary/chat-summary';
 import { ChatPanel } from './components/actual-chat/actual-chat';
 

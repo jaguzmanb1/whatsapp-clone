@@ -51,10 +51,6 @@ export const ChatPanel = ({conversation, userName, addMessageFunc}) => {
         return messages
     }
 
-    const handlePaste = (e) => {
-        console.log(e.clipboardData.getData('Text'))
-    }
-
     return(
         <section className="chat-panel-container">
             <section className="chat-panel-menu">
@@ -77,7 +73,7 @@ export const ChatPanel = ({conversation, userName, addMessageFunc}) => {
                             html={actualMessage}
                             onChange={handleMessageChange} 
                             onKeyPress={handleKeyUp}
-                            onPaste={handlePaste}/>
+                        />
                         <div className='chat-panel-placeholder'>Type a message</div>
                     </div>
                 </div>
