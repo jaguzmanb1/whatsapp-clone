@@ -71,6 +71,7 @@ function App() {
         <section className='right-panel-container'>
           <ChatPanel
             conversation={conversations[idConv]['messages']}
+            userName={conversations[idConv]['from']}
             addMessageFunc={appendToConversation}
           />
         </section>

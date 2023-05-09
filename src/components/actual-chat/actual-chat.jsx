@@ -6,7 +6,7 @@ import React from 'react'
 
 import ContentEditable from 'react-contenteditable'
 
-export const ChatPanel = ({conversation, addMessageFunc}) => {
+export const ChatPanel = ({conversation, userName, addMessageFunc}) => {
 
     const [ actualMessage, setActualMessage ] = useState("")
 
@@ -59,7 +59,7 @@ export const ChatPanel = ({conversation, addMessageFunc}) => {
         <section className="chat-panel-container">
             <section className="chat-panel-menu">
                 <img src="https://img.freepik.com/vector-premium/perfil-avatar-hombre-icono-redondo_24640-14044.jpg?w=826" alt="Avatar"/>
-                <p>Text</p>
+                <p>{userName}</p>
             </section>
             <section className='chat-panel-messages-container'>
                 <ul className='chat-panel-messages'>
