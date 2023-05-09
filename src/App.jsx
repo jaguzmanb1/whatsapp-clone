@@ -8,10 +8,56 @@ import { ChatPanel } from './components/actual-chat/actual-chat';
 
 function App() {
 
-  const [conversation, setConversation] = useState([])
+  const [idConv, setIdConv] = useState(0)
+
+  const [conversations, setConversations] = useState([
+    {
+      "id": 0,
+      "from": "Jhon Guzmán",
+      "messages": [
+        {
+          "type": "sent",
+          "text": "Holaa"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "from": "Duilia Guerrero",
+      "messages": [
+        {
+          "type": "sent",
+          "text": "Hi!"
+        }
+      ]
+    }
+  ])
 
   const appendToConversation = (element) => {
-    setConversation(p => [...conversation, element])
+    let arr = [...conversations]
+    arr[idConv]['messages'].push(element)
+    setConversations(arr)
+  }
+
+  const setActualConversation = (id) => {
+    setIdConv(id)
+  }
+
+  const renderChatSummaryConversations = () => {
+    let convs = []
+
+    for (let i = 0 ; i < conversations.length; i++) {
+      convs.push(
+        <ChatSummary
+          key={conversations[i]['id']}
+          from={conversations[i]['from']}
+          lastMessage={conversations[i]['messages'][conversations[i]['messages'].length - 1]['text']}
+          onClick={(e) => setActualConversation(i)}
+        />
+      )
+    }
+
+    return convs
   }
 
   return (
@@ -20,14 +66,11 @@ function App() {
       <section className='chat-container'>
         <section className='left-panel-container'> 
           <ProfileMenu/>
-          <ChatSummary/>
-          <ChatSummary/>
-          <ChatSummary/>
-          <ChatSummary/>
+          {renderChatSummaryConversations()}
         </section>
         <section className='right-panel-container'>
           <ChatPanel
-            conversation={conversation}
+            conversation={conversations[idConv]['messages']}
             addMessageFunc={appendToConversation}
           />
         </section>
