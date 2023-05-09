@@ -13,7 +13,7 @@ function App() {
   const [conversations, setConversations] = useState([
     {
       "id": 0,
-      "from": "Jhon Guzmán",
+      "from": "Jhon Doe",
       "messages": [
         {
           "type": "sent",
@@ -23,7 +23,7 @@ function App() {
     },
     {
       "id": 1,
-      "from": "Duilia Guerrero",
+      "from": "Jane Doe",
       "messages": [
         {
           "type": "sent",
