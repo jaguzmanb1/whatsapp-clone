@@ -133,6 +133,53 @@ export async function postRequestRaw(url, data){
     });
 }
 
+
+export function setUsername(username){
+    localStorage.setItem("username", username);
+}
+
+export function getUsername(){
+    return localStorage.getItem("username");
+}
+
+export function setEmail(email){
+    localStorage.setItem("email", email);
+}
+
+export function setLogin(){
+    localStorage.setItem("login", "true");
+}
+
+export function getLogin(){
+    return localStorage.getItem("login");
+}
+
+export function setLogOut(){
+    localStorage.setItem("login", "false");
+}
+
+export function isLoggedIn(){
+    return getLogin();
+}
+
+export async function logoutUser(){
+    logout().then(res => {
+        setLogOut();
+        setUsername(res.usuario);
+        setEmail(res.email);
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
+export function getEmail(){
+    return localStorage.getItem("email");
+}
+
+export function doesSupportStorage(){
+    return (typeof(Storage) !== "undefined");
+}
+
 export async function login(username, password) {
     let usr = {
         "email": username,

@@ -8,7 +8,8 @@ import { ProfileMenu } from './components/profile-menu/profie-menu';
 import { ChatSummary } from './components/chat-summary/chat-summary';
 import { ChatPanel } from './components/actual-chat/actual-chat';
 
-import { login, connectWs } from './api/user_api';
+import { login, isLoggedIn } from './api/user_api';
+import { LoginPage } from './components/login-page/login-page';
 
 function App() {
 
@@ -21,13 +22,6 @@ function App() {
       shouldReconnect: () => false,
     }
   );
-
-  const readyStateString = {
-    0: 'CONNECTING',
-    1: 'OPEN',
-    2: 'CLOSING',
-    3: 'CLOSED',
-  }[readyState];
 
   const [conversations, setConversations] = useState([
     {
@@ -53,8 +47,38 @@ function App() {
   ])
 
   useEffect(() => {
-    login("alex903g@gmail.com", "*4crnslm3d123")
+    //login("alex903g@gmail.com", "*4crnslm3d123")
   })
+
+  const showApp = () => {
+    if (isLoggedIn === "true") {
+      return (
+        <>
+          <section className='chat-container'>
+            <section className='left-panel-container'> 
+              <ProfileMenu/>
+              {renderChatSummaryConversations()}
+            </section>
+            <section className='right-panel-container'>
+              <ChatPanel
+                conversation={conversations[idConv]['messages']}
+                userName={conversations[idConv]['from']}
+                addMessageFunc={appendToConversation}
+              />
+            </section>
+          </section>
+        </>
+      )
+    } else {
+      return(
+        <>
+          <section className='login-main-container'>
+            <LoginPage/>
+          </section>
+        </>
+      )
+    }
+  }
 
   const appendToConversation = (element) => {
     let arr = [...conversations]
@@ -95,21 +119,10 @@ function App() {
   }
 
   return (
+    
     <section className='main-container'>
       <link href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css" rel="stylesheet"/>
-      <section className='chat-container'>
-        <section className='left-panel-container'> 
-          <ProfileMenu/>
-          {renderChatSummaryConversations()}
-        </section>
-        <section className='right-panel-container'>
-          <ChatPanel
-            conversation={conversations[idConv]['messages']}
-            userName={conversations[idConv]['from']}
-            addMessageFunc={appendToConversation}
-          />
-        </section>
-      </section>
+      {showApp()}
     </section>
   )
 }

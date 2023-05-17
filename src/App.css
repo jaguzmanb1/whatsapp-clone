@@ -23,6 +23,13 @@
   background-color: darkslategray;
 }
 
+.login-main-container {
+  width: 90vw;
+  height: 100%;
+
+  background-color: dimgray;
+}
+
 .profile-config-menu {
   display: flex;
 
